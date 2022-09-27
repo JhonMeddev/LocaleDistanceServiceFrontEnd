@@ -2,6 +2,12 @@ body{
 	background-color: #5CACEE;
 }
 
+section{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 #cabecalho {
 	width: 910px;
 	height: 100px;
@@ -35,8 +41,42 @@ body{
 	height: 300px;
 	width: 600px;
 	border: 1px dashed black;
+	padding: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 input{
 	margin-top: 4px;
 }
+
+h5{
+    color: green;
+}
+
+.distancia-wrapper{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.distancia{
+	align-items: center;
+	display: none;
+	margin: 5px;
+}
+
+
+.fas{
+	font-size: 30px;
+	color: gray;
+	filter: drop-shadow(1px 1px black);
+}
+
+#distancia{
+	color: green;
+	padding-top: 80px;
+	display: flex;
+}
+
