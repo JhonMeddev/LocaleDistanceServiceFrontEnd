@@ -1,0 +1,23 @@
+<html lang='pt-br'>
+	<head>
+		<meta charset='UTF-8'>
+		<title>Ajax com jQuery</title>
+		<link rel='stylesheet' type='text/css' href='style.css'>
+		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<header id='cabecalho'>
+			<h1>Serviço para calcular distância</h1>
+		</header>				
+		<main id='container'>
+			<section>
+				<h3>Calculando Distância entre Pontos</h3>
+                <label>Ponto Um: </label><input id="a"><br>
+				<label>Ponto Dois: </label><input id="b"><br><br>			
+                <button type="button" onclick="testeAJAX()">Calcular Distância</button><br><br>
+				<div id="r"></div>                
+			<section>
+		</main>		
+	</body>
+</html>
