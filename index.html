@@ -1,11 +1,9 @@
 <html lang='pt-br'>
 	<head>
 		<meta charset='UTF-8'>
-		<title>Ajax com jQuery</title>
+		<title>Sistema de Coordenadas</title>
 		<link rel='stylesheet' type='text/css' href='style.css'>
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.0/css/all.min.css">
-		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-		<script src="script.js"></script>
 	</head>
 	<body>
 		<header id='cabecalho'>
@@ -15,10 +13,11 @@
 			<section>
 				<h3>Calcular distancia entre coordenadas</h3>
                 
-				<form action="." method="get">
+				<form action="/" id="searchForm">
 
-                    <label>Coordenada A: <input name="n1" type="text" id="n1" value="" /></label><br/>
-                    <label>Coordenada B: <input name="n2" type="text" id="n2" value="" /></label><br/>
+                    <label>Coordenada A: <input name="n1" type="text"></label><br/>
+                    <label>Coordenada B: <input name="n2" type="text"></label><br/>
+					<input type="submit" value="Search">
 
                 </form>
 
@@ -38,7 +37,7 @@
 							</div>
 
 							
-								<span id="distancia"></span>
+								<span id="distancia" class="km"></span>
 							
 
 						</div>
@@ -50,4 +49,7 @@
 			<section>
 		</main>		
 	</body>
+	<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+	<script src="script.js"></script>
 </html>

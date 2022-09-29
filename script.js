@@ -1,50 +1,51 @@
+// Anexa um manipulador de envio ao formulário
+$( "#searchForm" ).submit(function( event ) {
+    
+ 
+    // Evita que o formulário faça seu envio normal
+    event.preventDefault();
+   
+    // Obtém alguns valores dos elementos da página:
+    var $form = $( this ),
+      term = $form.find( "input[name='n1']" ).val(),
+      term1 = $form.find( "input[name='n2']" ).val(),
+      url = $form.attr( "action" );
 
-        $(document).ready(function() {
+      if (term != "" && term1 != ""){
 
-            function limpa_formulário() {
-                // Limpa valores do formulário de coordenadas.
-                $("#n1").text("");
-                $("#n2").text("");
+        //Preenche os campos com "..." enquanto consulta webservice.
+        $("#distancia").val("...");
+
+     // Envia os dados usando post
+            $.ajax({
+            type: "POST",
+            url: "http://localhost:8080/hello-world/",
+            data: JSON.stringify({
+                n1: term,
+                n2: term1,
+            }),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function(dados){
+                $("#placeholder").text("")
+                $(".distancia").css("display","flex")
+
+                //Atualiza os campos com os valores da consulta.
+                $("#local1").text(dados.waypoints[0].name);
+                $("#local2").text(dados.waypoints[1].name);
+                var distancia = dados.routes[0].distance
+                $("#distancia").text(distancia);
+                $('.km').mask('000.000,0'+' KM', {reverse: true});
+                
+        },
+            error: function(err) {
+                $("#local1").text("");
+                $("#local2").text("");
+                $("#distancia").text("");
+                $(".distancia").css("")
+                alert("Coordenadas não encontrada.");
             }
-            
-            //Quando o campo cep perde o foco.
-            $("#n2").blur(function() {
-
-                //Novas variáveis "n1" e "n2".
-                var n1 = $("#n1").val();
-                var n2 = $("#n2").val();
-
-                //Verifica se os campos possui valor informado.
-                if (n1 != "" && n2 != "") {
-
-                    $("#placeholder").text("")
-                    $(".distancia").css("display","flex")
-
-                        //Preenche os campos com "..." enquanto consulta webservice.
-                        $("#distancia").val("...");
-
-                        //Consulta o webservice viacep.com.br/
-                        $.getJSON("https://router.project-osrm.org/route/v1/driving/"+ n1 + ";" + n2 , function(dados) {
-
-                            if (!("erro" in dados)) {
-                                //Atualiza os campos com os valores da consulta.
-                                $("#local1").text(dados.waypoints[0].name);
-                                $("#local2").text(dados.waypoints[1].name);
-                                $("#distancia").text(dados.routes[0].distance + " KM");
-
-                            } //end if.
-                            else {
-                                //CEP pesquisado não foi encontrado.
-                                limpa_formulário();
-                                alert("Coordenadas não encontrado.");
-                            }
-                        });
-
-                } //end if.
-                else {
-                    //cep sem valor, limpa formulário.
-                    limpa_formulário();
-                }
-            });
-
         });
+    }
+   
+  });
