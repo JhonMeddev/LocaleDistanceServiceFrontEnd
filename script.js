@@ -19,7 +19,7 @@ $( "#searchForm" ).submit(function( event ) {
      // Envia os dados usando post
             $.ajax({
             type: "POST",
-            url: "http://localhost:8080/hello-world/",
+            url: "http://localhost:8080/coordenadas/",
             data: JSON.stringify({
                 n1: term,
                 n2: term1,
